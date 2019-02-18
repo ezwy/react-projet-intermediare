@@ -3,23 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+createTable = (n, min, max) =>{
+   let table = []
+
+   for (let i = min; i <= max; i++){
+      let children = [];
+      if(Math.trunc(i%n) === 0){
+          children.push(<td>{`${i}`}</td>)
+      }
+   table.push(<tr>{children}</tr>);
+   }
+}
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <h1>Calculation exercise :</h1>
+          <ul>
+            <li>
+              Calculation of multiplication for 4 between 50 and 149 : {this.createTable(4, 50, 149)}
+            </li>
+            <li>
+              Calculation of multiplication for 7 between 500 and 1000 : {this.createTable(7, 500, 1000)}
+            </li>
+          </ul>
+
       </div>
     );
   }
