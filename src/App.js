@@ -19,13 +19,26 @@ class App extends Component {
     return table
   }
 
+  createVoyageEle = () => {
+    let elementsMap = ['cities', 'numbers', 'foods', 'transport'];
+    //let sizeMap =  elementsMap.map(elementsMap => elementsMap.length);
+    let table = [];
+    let children = [];
+    elementsMap.forEach(element => children.push(<td>{`${element + '||'}`}</td>))
+
+    table.push(<tr>{children}</tr>);
+    return table;
+  }
+
+
+
   calculateSomme = (n, min, max) => {
     let somme = 0
     for (let i = min; i <= max; i++) {
       if (Math.trunc(i % n) === 0) {
         somme += i
       }
-     
+
     }
     return somme
   }
@@ -44,11 +57,17 @@ class App extends Component {
           </li>
           <li>
             Calculation of multiplication for 3 between 10 and 25 : {this.createTable(3, 10, 25)}
-            ……………………somme: {this.calculateSomme(3,10,25)}
+            ……………………somme: {this.calculateSomme(3, 10, 25)}
           </li>
-        </ul>
 
+
+        </ul>
+        <div>
+          The elements in the voyage are: {this.createVoyageEle()}
+        </div>
       </div>
+
+
     );
   }
 }
